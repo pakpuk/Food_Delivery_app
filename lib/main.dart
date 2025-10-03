@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/common/themes/theme_provider.dart';
 import 'package:food_delivery_app/screens/log_iin_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => ThemeProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Montserrat',
-      ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
       home: LogInScreen(),
     );
   }
