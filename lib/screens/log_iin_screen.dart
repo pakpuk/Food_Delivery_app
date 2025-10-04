@@ -4,13 +4,27 @@ import 'package:food_delivery_app/screens/home_screen.dart';
 import 'package:food_delivery_app/widgets/m_button.dart';
 import 'package:food_delivery_app/widgets/text_form_fieldwidgert.dart';
 
-class LogInScreen extends StatelessWidget {
+class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
 
   @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
+  @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     TextEditingController emailcontroller = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
+
+    @override
+    void dispose() {
+      emailcontroller.dispose();
+      passwordcontroller.dispose();
+      super.dispose();
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
@@ -37,43 +51,46 @@ class LogInScreen extends StatelessWidget {
               height: 25,
             ),
             Form(
+                key: _formKey,
                 child: Column(
-              children: [
-                TextFormFieldwidget(
-                  ispassword: false,
-                  label: "Email",
-                  controller: emailcontroller,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please ente  the  password';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                TextFormFieldwidget(
-                    ispassword: true,
-                    label: "Password",
-                    controller: passwordcontroller,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please ente  the  password';
-                      }
-                      return null;
-                    }),
-              ],
-            )),
+                  children: [
+                    TextFormFieldwidget(
+                      ispassword: false,
+                      label: "Email",
+                      controller: emailcontroller,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please ente  the  password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormFieldwidget(
+                        ispassword: true,
+                        label: "Password",
+                        controller: passwordcontroller,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please ente  the  password';
+                          }
+                          return null;
+                        }),
+                  ],
+                )),
             const SizedBox(height: 25),
             MyButtonWidget(
                 title: TextManager.welcometxt,
                 ontap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
                 },
                 borderRadius: 16,
-                padding: EdgeInsets.all(20))
+                padding: const EdgeInsets.all(20))
           ],
         ),
       ),
