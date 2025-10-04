@@ -33,7 +33,29 @@ class LogInScreen extends StatelessWidget {
             height: 25,
           ),
           TextFormFieldwidget(
-              ispassword: false, label: "Email", controller: emailcontroller)
+            ispassword: false,
+            label: "Email",
+            controller: emailcontroller,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please ente  the  password';
+              }
+              return null;
+            },
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          TextFormFieldwidget(
+              ispassword: true,
+              label: "Password",
+              controller: passwordcontroller,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please ente  the  password';
+                }
+                return null;
+              }),
         ],
       ),
     );
