@@ -4,14 +4,13 @@ class TextFormFieldwidget extends StatefulWidget {
   const TextFormFieldwidget(
       {super.key,
       required this.ispassword,
-      this.suffixicon,
       required this.label,
       this.validator,
       required this.controller});
   final bool ispassword;
-  final IconData? suffixicon;
+
   final String label;
-  final VoidCallback? validator;
+  final FormFieldValidator<String>? validator;
   final TextEditingController controller;
 
   @override

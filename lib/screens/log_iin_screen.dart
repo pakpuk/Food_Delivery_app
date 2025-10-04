@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/common/text_manager.dart';
+import 'package:food_delivery_app/widgets/text_form_fieldwidgert.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailcontroller = TextEditingController();
+    TextEditingController passwordcontroller = TextEditingController();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
@@ -15,15 +19,21 @@ class LogInScreen extends StatelessWidget {
             color: Theme.of(context).colorScheme.inversePrimary,
           ),
           SizedBox(
-            height: 28,
+            height: 25,
           ),
           Text(
             TextManager.welcometxt,
             style: TextStyle(
               color: Theme.of(context).colorScheme.inversePrimary,
               fontSize: 18,
+              fontWeight: FontWeight.w600,
             ),
-          )
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          TextFormFieldwidget(
+              ispassword: false, label: "Email", controller: emailcontroller)
         ],
       ),
     );
