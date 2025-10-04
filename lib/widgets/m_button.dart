@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/common/text_manager.dart';
 
 class MyButtonWidget extends StatelessWidget {
-  const MyButtonWidget({super.key, required this.title, required this.ontap});
+  const MyButtonWidget(
+      {super.key,
+      required this.title,
+      required this.ontap,
+      this.bgColor,
+      required this.borderRadius,
+      required this.padding});
   final String title;
   final VoidCallback ontap;
+  final Color? bgColor;
+  final double borderRadius;
+  final EdgeInsets padding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ontap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: padding,
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(16)),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).colorScheme.secondary),
+            color: bgColor ?? Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(borderRadius)),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).colorScheme.secondary),
+          ),
         ),
       ),
     );
