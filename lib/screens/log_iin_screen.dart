@@ -11,52 +11,60 @@ class LogInScreen extends StatelessWidget {
     TextEditingController passwordcontroller = TextEditingController();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
-        children: [
-          Icon(
-            Icons.lock_open_outlined,
-            size: 100,
-            color: Theme.of(context).colorScheme.inversePrimary,
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Text(
-            TextManager.welcometxt,
-            style: TextStyle(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: [
+            Icon(
+              Icons.lock_open_outlined,
+              size: 100,
               color: Theme.of(context).colorScheme.inversePrimary,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
             ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          TextFormFieldwidget(
-            ispassword: false,
-            label: "Email",
-            controller: emailcontroller,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please ente  the  password';
-              }
-              return null;
-            },
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          TextFormFieldwidget(
-              ispassword: true,
-              label: "Password",
-              controller: passwordcontroller,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please ente  the  password';
-                }
-                return null;
-              }),
-        ],
+            const SizedBox(
+              height: 25,
+            ),
+            Text(
+              TextManager.welcometxt,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Form(
+                child: Column(
+              children: [
+                TextFormFieldwidget(
+                  ispassword: false,
+                  label: "Email",
+                  controller: emailcontroller,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please ente  the  password';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                TextFormFieldwidget(
+                    ispassword: true,
+                    label: "Password",
+                    controller: passwordcontroller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please ente  the  password';
+                      }
+                      return null;
+                    }),
+              ],
+            )),
+          ],
+        ),
       ),
     );
   }
