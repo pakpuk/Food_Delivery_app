@@ -18,7 +18,7 @@ class MyButtonWidget extends StatelessWidget {
           title,
           style: TextStyle(
               fontWeight: FontWeight.w600,
-              color: Theme.of(context).colorScheme.tertiary),
+              color: Theme.of(context).colorScheme.secondary),
         ),
       ),
     );
