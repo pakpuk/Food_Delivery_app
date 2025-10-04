@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/common/text_manager.dart';
+import 'package:food_delivery_app/screens/home_screen.dart';
+import 'package:food_delivery_app/widgets/m_button.dart';
 import 'package:food_delivery_app/widgets/text_form_fieldwidgert.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -63,6 +65,15 @@ class LogInScreen extends StatelessWidget {
                     }),
               ],
             )),
+            const SizedBox(height: 25),
+            MyButtonWidget(
+                title: TextManager.welcometxt,
+                ontap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
+                borderRadius: 16,
+                padding: EdgeInsets.all(20))
           ],
         ),
       ),
