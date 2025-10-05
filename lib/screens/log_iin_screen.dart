@@ -30,93 +30,97 @@ class _LogInScreenState extends State<LogInScreen> {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Icon(
-              Icons.lock_open_outlined,
-              size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Text(
-              TextManager.welcometxt,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormFieldwidget(
-                      ispassword: false,
-                      label: "Email",
-                      controller: emailcontroller,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please ente  the  password';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    TextFormFieldwidget(
-                        ispassword: true,
-                        label: "Password",
-                        controller: passwordcontroller,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please ente  the  password';
-                          }
-                          return null;
-                        }),
-                  ],
-                )),
-            const SizedBox(height: 25),
-            MyButtonWidget(
-                title: TextManager.welcometxt,
-                ontap: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
-                    );
-                  }
-                },
-                borderRadius: 16,
-                padding: const EdgeInsets.all(20)),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: TextManager.udonthaveaccounttxt,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Icon(
+                  Icons.lock_open_outlined,
+                  size: 100,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  TextManager.welcometxt,
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary)),
-              TextSpan(
-                  text: TextManager.registre,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      fontWeight: FontWeight.bold),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LogInScreen(),
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormFieldwidget(
+                          ispassword: false,
+                          label: "Email",
+                          controller: emailcontroller,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please ente  the  password';
+                            }
+                            return null;
+                          },
                         ),
-                      );
-                    })
-            ]))
-          ],
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        TextFormFieldwidget(
+                            ispassword: true,
+                            label: "Password",
+                            controller: passwordcontroller,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please ente  the  password';
+                              }
+                              return null;
+                            }),
+                      ],
+                    )),
+                const SizedBox(height: 25),
+                MyButtonWidget(
+                    title: TextManager.welcometxt,
+                    ontap: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                        );
+                      }
+                    },
+                    borderRadius: 16,
+                    padding: const EdgeInsets.all(20)),
+                RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: TextManager.udonthaveaccounttxt,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary)),
+                  TextSpan(
+                      text: TextManager.registre,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          fontWeight: FontWeight.bold),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LogInScreen(),
+                            ),
+                          );
+                        })
+                ]))
+              ],
+            ),
+          ),
         ),
       ),
     );
