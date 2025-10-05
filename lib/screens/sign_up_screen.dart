@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/common/text_manager.dart';
 import 'package:food_delivery_app/screens/home_screen.dart';
+import 'package:food_delivery_app/screens/log_iin_screen.dart';
 import 'package:food_delivery_app/widgets/m_button.dart';
 import 'package:food_delivery_app/widgets/text_form_fieldwidgert.dart';
 
@@ -139,7 +141,16 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
                   text: TextManager.logintxt,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
-                      fontWeight: FontWeight.bold))
+                      fontWeight: FontWeight.bold),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LogInScreen(),
+                        ),
+                      );
+                    })
             ]))
           ],
         ),
