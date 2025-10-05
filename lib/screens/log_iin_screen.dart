@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/common/text_manager.dart';
 import 'package:food_delivery_app/screens/home_screen.dart';
@@ -93,7 +94,28 @@ class _LogInScreenState extends State<LogInScreen> {
                   }
                 },
                 borderRadius: 16,
-                padding: const EdgeInsets.all(20))
+                padding: const EdgeInsets.all(20)),
+            RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: TextManager.uhaveaccounttxt,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary)),
+              TextSpan(
+                  text: TextManager.logintxt,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                      fontWeight: FontWeight.bold),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LogInScreen(),
+                        ),
+                      );
+                    })
+            ]))
           ],
         ),
       ),
