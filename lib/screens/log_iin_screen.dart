@@ -98,11 +98,11 @@ class _LogInScreenState extends State<LogInScreen> {
             RichText(
                 text: TextSpan(children: [
               TextSpan(
-                  text: TextManager.uhaveaccounttxt,
+                  text: TextManager.udonthaveaccounttxt,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary)),
               TextSpan(
-                  text: TextManager.logintxt,
+                  text: TextManager.registre,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold),
