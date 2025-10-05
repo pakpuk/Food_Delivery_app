@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key, required this.text, this.ontap, this.icon});
+class MyDrawertileWidget extends StatelessWidget {
+  const MyDrawertileWidget(
+      {super.key, required this.text, required this.ontap, this.icon});
   final String text;
-  final VoidCallback? ontap;
+  final VoidCallback ontap;
   final IconData? icon;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(left: 25),
+      child: ListTile(
+        onTap: ontap,
+        leading: Icon(
+          icon,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        title: Text(
+          text,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.inversePrimary,
+          ),
+        ),
+      ),
+    );
   }
 }
