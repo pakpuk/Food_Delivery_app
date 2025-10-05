@@ -22,6 +22,8 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
   void dispose() {
     emailcontroller.dispose();
     passwordcontroller.dispose();
+    confirmpasswordcontroller.dispose();
+    namecontroller.dispose();
     super.dispose();
   }
 
@@ -58,11 +60,25 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
                   children: [
                     TextFormFieldwidget(
                       ispassword: false,
+                      label: "Name",
+                      controller: namecontroller,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please ente  your Name';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormFieldwidget(
+                      ispassword: false,
                       label: "Email",
                       controller: emailcontroller,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please ente  the  password';
+                          return 'Please ente  the  email';
                         }
                         return null;
                       },
@@ -80,6 +96,20 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
                           }
                           return null;
                         }),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormFieldwidget(
+                      ispassword: true,
+                      label: "Confirm Password",
+                      controller: confirmpasswordcontroller,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm  the  password';
+                        }
+                        return null;
+                      },
+                    ),
                   ],
                 )),
             const SizedBox(height: 25),
@@ -102,11 +132,11 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
             RichText(
                 text: TextSpan(children: [
               TextSpan(
-                  text: TextManager.udonthaveaccounttxt,
+                  text: TextManager.uhaveaccounttxt,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary)),
               TextSpan(
-                  text: TextManager.registre,
+                  text: TextManager.logintxt,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold))
