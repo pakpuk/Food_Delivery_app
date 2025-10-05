@@ -84,10 +84,13 @@ class _LogInScreenState extends State<LogInScreen> {
             MyButtonWidget(
                 title: TextManager.welcometxt,
                 ontap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  }
                 },
                 borderRadius: 16,
                 padding: const EdgeInsets.all(20))
