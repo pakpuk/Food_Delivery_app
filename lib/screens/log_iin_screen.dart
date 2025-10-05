@@ -12,19 +12,19 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    TextEditingController emailcontroller = TextEditingController();
-    TextEditingController passwordcontroller = TextEditingController();
-
-    @override
-    void dispose() {
-      emailcontroller.dispose();
-      passwordcontroller.dispose();
-      super.dispose();
-    }
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
