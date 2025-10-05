@@ -46,7 +46,7 @@ class _SignUpScrreenState extends State<SignUpScrreen> {
               height: 25,
             ),
             Text(
-              TextManager.welcometxt,
+              TextManager.createaccount,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 fontSize: 18,

@@ -5,4 +5,5 @@ class TextManager {
   static const String udonthaveaccounttxt = ' You dont have an account ?';
   static const String uhaveaccounttxt = ' You already have an account ?';
   static const String registre = 'Register Here';
+  static const String createaccount = 'Lets create an accouunt  for you !';
 }
