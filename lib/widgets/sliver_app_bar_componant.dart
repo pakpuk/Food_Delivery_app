@@ -9,19 +9,22 @@ class SliverAppBarComponant extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Theme.of(context).colorScheme.background,
+      foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       actions: [
         IconButton(
           onPressed: () => Navigator.push,
-          icon: Icon(
+          icon: const Icon(
             Icons.shopping_cart,
-            color: Theme.of(context).colorScheme.primary,
           ),
         )
       ],
       floating: false,
       pinned: true,
-      title: Text('Subset Dinner'),
+      title: const Text('Subset Dinner'),
       flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
+        expandedTitleScale: 1,
+        titlePadding: const EdgeInsets.only(top: 0, left: 0, right: 0),
         background: child,
         title: Text(title),
       ),
