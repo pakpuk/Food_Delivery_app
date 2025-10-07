@@ -13,7 +13,10 @@ class HomeScreen extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverAppBarComponant(
                   title: '',
-                  child: Text('hello '),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [],
+                  ),
                 )
               ],
           body: Text("hello")),
