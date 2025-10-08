@@ -15,7 +15,13 @@ class HomeScreen extends StatelessWidget {
                   title: '',
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [],
+                    children: [
+                      Divider(
+                        indent: 25,
+                        endIndent: 25,
+                        color: Theme.of(context).colorScheme.secondary,
+                      )
+                    ],
                   ),
                 )
               ],
