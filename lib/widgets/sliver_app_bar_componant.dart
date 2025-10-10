@@ -20,7 +20,7 @@ class SliverAppBarComponant extends StatelessWidget {
       ],
       floating: false,
       pinned: true,
-      title: const Text('Subset Dinner'),
+      title: const Text('Sunset Dinner'),
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         expandedTitleScale: 1,
