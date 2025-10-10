@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SliverAppBarComponant extends StatelessWidget {
   const SliverAppBarComponant(
       {super.key, required this.title, required this.child});
-  final String title;
+  final Widget title;
   final Widget child;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SliverAppBarComponant extends StatelessWidget {
         expandedTitleScale: 1,
         titlePadding: const EdgeInsets.only(top: 0, left: 0, right: 0),
         background: child,
-        title: Text(title),
+        title: title,
       ),
     );
   }

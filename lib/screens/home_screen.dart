@@ -2,10 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
 import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
+import 'package:food_delivery_app/widgets/my_tab_bar.dart';
 import 'package:food_delivery_app/widgets/sliver_app_bar_componant.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +34,7 @@ class HomeScreen extends StatelessWidget {
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverAppBarComponant(
-                  title: '',
+                  title: MyTabBar(tabBarController: _tabController),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
