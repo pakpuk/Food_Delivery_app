@@ -14,16 +14,19 @@ class MyCurrentLocationwidget extends StatelessWidget {
             "Deliver Now",
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
-          Row(
-            children: [
-              Text(
-                "6901 Hollywood  Blv",
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                    fontWeight: FontWeight.bold),
-              ),
-              Icon(Icons.keyboard_arrow_down_rounded)
-            ],
+          GestureDetector(
+            onTap: () => Navigator.push,
+            child: Row(
+              children: [
+                Text(
+                  "6901 Hollywood  Blv",
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                      fontWeight: FontWeight.bold),
+                ),
+                Icon(Icons.keyboard_arrow_down_rounded)
+              ],
+            ),
           )
         ],
       ),
