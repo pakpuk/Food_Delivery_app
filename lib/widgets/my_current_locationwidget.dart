@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/widgets/openlocation_searchbox.dart';
 
 class MyCurrentLocationwidget extends StatelessWidget {
   const MyCurrentLocationwidget({super.key});
@@ -16,7 +15,7 @@ class MyCurrentLocationwidget extends StatelessWidget {
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
           GestureDetector(
-            onTap: () => OpenlocationSearchbox(),
+            onTap: () => OpenlocationSearchbox(context),
             child: Row(
               children: [
                 Text(
@@ -33,4 +32,25 @@ class MyCurrentLocationwidget extends StatelessWidget {
       ),
     );
   }
+}
+
+void OpenlocationSearchbox(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            title: const Text("Your Location"),
+            content: const TextField(
+              decoration: InputDecoration(hintText: 'Search Location..'),
+            ),
+            actions: [
+              MaterialButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              MaterialButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Save'),
+              )
+            ],
+          ));
 }

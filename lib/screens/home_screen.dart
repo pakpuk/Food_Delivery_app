@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
+import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
 import 'package:food_delivery_app/widgets/sliver_app_bar_componant.dart';
 
@@ -20,7 +22,9 @@ class HomeScreen extends StatelessWidget {
                         indent: 25,
                         endIndent: 25,
                         color: Theme.of(context).colorScheme.secondary,
-                      )
+                      ),
+                      MyCurrentLocationwidget(),
+                      MyDescriptionBox()
                     ],
                   ),
                 )
