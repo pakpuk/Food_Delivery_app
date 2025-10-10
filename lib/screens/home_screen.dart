@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverAppBarComponant(
@@ -50,7 +50,23 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 )
               ],
-          body: Text("hello")),
+          body: TabBarView(
+            children: [
+              ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext, index) =>
+                      Text("first tab items")),
+              ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext, index) =>
+                      Text("first tab items")),
+              ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext, index) =>
+                      Text("first tab items")),
+            ],
+            controller: _tabController,
+          )),
     );
   }
 }
