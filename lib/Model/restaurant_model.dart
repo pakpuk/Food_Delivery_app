@@ -113,4 +113,6 @@ class RestaurantModel {
         ],
         category: FoodCategories.burgers),
   ];
+
+  List<FoodModel> get menuList => menu;
 }
