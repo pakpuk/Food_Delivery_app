@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/Model/restaurant_model.dart';
 import 'package:food_delivery_app/common/themes/theme_provider.dart';
 import 'package:food_delivery_app/screens/log_iin_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => ThemeProvider(), child: const MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => RestaurantModel())
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
