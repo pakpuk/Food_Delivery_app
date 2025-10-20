@@ -29,6 +29,11 @@ class _HomeScreenState extends State<HomeScreen>
     super.dispose();
   }
 
+  List<FoodModel> _filterMenuByCategory(
+      FoodCategories category, List<FoodModel> fullMenu) {
+    return fullMenu.where((food) => food.category == category).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
