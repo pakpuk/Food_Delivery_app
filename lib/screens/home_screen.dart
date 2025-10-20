@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/Model/food_model.dart';
 import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
 import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
@@ -18,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController =
+        TabController(length: FoodCategories.values.length, vsync: this);
   }
 
   @override
@@ -52,6 +54,14 @@ class _HomeScreenState extends State<HomeScreen>
               ],
           body: TabBarView(
             children: [
+              ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext, index) =>
+                      Text("first tab items")),
+              ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext, index) =>
+                      Text("first tab items")),
               ListView.builder(
                   itemCount: 5,
                   itemBuilder: (BuildContext, index) =>
