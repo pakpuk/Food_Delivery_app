@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/Model/food_model.dart';
+import 'package:food_delivery_app/Model/restaurant_model.dart';
 import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
 import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
 import 'package:food_delivery_app/widgets/my_tab_bar.dart';
 import 'package:food_delivery_app/widgets/sliver_app_bar_componant.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,54 +36,48 @@ class _HomeScreenState extends State<HomeScreen>
     return fullMenu.where((food) => food.category == category).toList();
   }
 
+  List<Widget> getFoodInThisCategory(List<FoodModel> fullMenu) {
+    return FoodCategories.values.map((category) {
+      List<FoodModel> categoryMenu = _filterMenuByCategory(category, fullMenu);
+      return ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: categoryMenu.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(categoryMenu[index].name),
+            );
+          });
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MyDrawer(),
-      body: NestedScrollView(
+        drawer: const MyDrawer(),
+        body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBarComponant(
-                  title: MyTabBar(tabBarController: _tabController),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Divider(
-                        indent: 25,
-                        endIndent: 25,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      MyCurrentLocationwidget(),
-                      MyDescriptionBox(),
-                    ],
+            SliverAppBarComponant(
+              title: MyTabBar(tabBarController: _tabController),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Divider(
+                    indent: 25,
+                    endIndent: 25,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
-                )
-              ],
-          body: TabBarView(
-            children: [
-              ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext, index) =>
-                      Text("first tab items")),
-              ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext, index) =>
-                      Text("first tab items")),
-              ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext, index) =>
-                      Text("first tab items")),
-              ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext, index) =>
-                      Text("first tab items")),
-              ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext, index) =>
-                      Text("first tab items")),
-            ],
-            controller: _tabController,
-          )),
-    );
+                  MyCurrentLocationwidget(),
+                  MyDescriptionBox(),
+                ],
+              ),
+            )
+          ],
+          body: Consumer<RestaurantModel>(
+              builder: (context, restaurant, child) => TabBarView(
+                    children: getFoodInThisCategory(restaurant.menu),
+                    controller: _tabController,
+                  )),
+        ));
   }
 }
