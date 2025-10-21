@@ -15,20 +15,27 @@ class FoodTileWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: ontap,
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Text(food.name),
-                    Text(
-                      food.price.toString(),
-                    ),
-                    Text(food.discription),
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(food.name),
+                      Text(
+                        food.price.toString(),
+                      ),
+                      Text(food.discription),
+                    ],
+                  ),
                 ),
-              )
-            ],
+                Image.asset(
+                  "name",
+                  height: 120,
+                )
+              ],
+            ),
           ),
         )
       ],
