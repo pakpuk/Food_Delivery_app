@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen>
     return FoodCategories.values.map((category) {
       List<FoodModel> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: categoryMenu.length,
           itemBuilder: (context, index) {
             return ListTile(
