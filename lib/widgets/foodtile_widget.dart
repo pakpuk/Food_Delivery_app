@@ -21,12 +21,20 @@ class FoodTileWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(food.name),
                       Text(
-                        food.price.toString(),
+                        '\$' + food.price.toString(),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary),
                       ),
-                      Text(food.discription),
+                      Text(
+                        food.discription,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
+                      ),
                     ],
                   ),
                 ),
