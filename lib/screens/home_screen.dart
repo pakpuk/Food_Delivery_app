@@ -5,6 +5,7 @@ import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
 import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
 import 'package:food_delivery_app/widgets/my_tab_bar.dart';
+import 'package:food_delivery_app/widgets/foodtile_widget.dart';
 import 'package:food_delivery_app/widgets/sliver_app_bar_componant.dart';
 import 'package:provider/provider.dart';
 
@@ -43,8 +44,10 @@ class _HomeScreenState extends State<HomeScreen>
           physics: const NeverScrollableScrollPhysics(),
           itemCount: categoryMenu.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(categoryMenu[index].name),
+            var food = categoryMenu[index];
+            return FoodTileWidget(
+              food: food,
+              ontap: () {},
             );
           });
     }).toList();
