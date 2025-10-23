@@ -10,4 +10,9 @@ class CardModel {
     required this.selectedAddons,
     this.quantiy = 1,
   });
+  double get totalPrice {
+    double addonsprice =
+        selectedAddons.fold(0, (sum, addon) => sum + addon.price);
+    return (food.price + addonsprice) * quantiy;
+  }
 }
