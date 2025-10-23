@@ -19,12 +19,26 @@ class _FoodPageDetailsState extends State<FoodPageDetails> {
       body: SafeArea(
         child: Column(
           children: [
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: widget.food.availabeAddones.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(value: false, onChanged: (value) {});
-                })
+            Padding(
+              padding: const EdgeInsets.all(22.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: widget.food.availabeAddones.length,
+                      itemBuilder: (context, index) {
+                        Addon addon = widget.food.availabeAddones[index];
+                        return CheckboxListTile(
+                            title: Text(addon.name),
+                            subtitle: Text(addon.price.toString()),
+                            value: false,
+                            onChanged: (value) {});
+                      }),
+                ],
+              ),
+            )
           ],
         ),
       ),
