@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/Model/food_model.dart';
 import 'package:food_delivery_app/Model/restaurant_model.dart';
+import 'package:food_delivery_app/screens/food_page_details.dart';
 import 'package:food_delivery_app/widgets/my_current_locationwidget.dart';
 import 'package:food_delivery_app/widgets/my_description_box.dart';
 import 'package:food_delivery_app/widgets/my_drawer.dart';
@@ -47,7 +48,12 @@ class _HomeScreenState extends State<HomeScreen>
             var food = categoryMenu[index];
             return FoodTileWidget(
               food: food,
-              ontap: () {},
+              ontap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FoodPageDetails(food: food)));
+              },
             );
           });
     }).toList();
