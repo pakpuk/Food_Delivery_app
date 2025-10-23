@@ -139,5 +139,5 @@ class RestaurantModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeFromCard(FoodModel food, List<Addon> selectedAddons) {}
+  void removeFromCard(CardModel cardItem) {}
 }
