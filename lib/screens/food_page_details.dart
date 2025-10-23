@@ -16,8 +16,17 @@ class _FoodPageDetailsState extends State<FoodPageDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [],
+      body: SafeArea(
+        child: Column(
+          children: [
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: widget.food.availabeAddones.length,
+                itemBuilder: (context, index) {
+                  return CheckboxListTile(value: false, onChanged: (value) {});
+                })
+          ],
+        ),
       ),
     );
   }
