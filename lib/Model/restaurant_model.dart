@@ -122,7 +122,7 @@ class RestaurantModel extends ChangeNotifier {
   final List<CardModel> _cart = [];
 
   void addToCart(FoodModel food, List<Addon> selectedAddons) {
-    CardModel? cardIteme = _cart.firstOrNull((item) {
+    CardModel? cardIteme = _cart.firstWhereOrNull((item) {
       bool isSameFood = item.food == food;
       bool isSameAddons =
           ListEquality().equals(item.selectedAddons, selectedAddons);
@@ -130,6 +130,14 @@ class RestaurantModel extends ChangeNotifier {
     });
     if (cardIteme != null) {
       cardIteme.quantity++;
+    } else {
+      _cart.add(CardModel(
+        food: food,
+        selectedAddons: selectedAddons,
+      ));
     }
+    notifyListeners();
   }
+
+  void removeFromCard(FoodModel food, List<Addon> selectedAddons) {}
 }
