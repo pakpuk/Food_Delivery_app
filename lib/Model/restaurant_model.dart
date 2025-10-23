@@ -116,4 +116,6 @@ class RestaurantModel extends ChangeNotifier {
   ];
 
   List<FoodModel> get menuList => menu;
+
+  void addToCart (FoodModel food ,)
 }

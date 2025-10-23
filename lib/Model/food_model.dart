@@ -21,6 +21,7 @@ enum FoodCategories {
   sides,
   drinks,
   desserts,
+  length,
 }
 
 class Addon {
