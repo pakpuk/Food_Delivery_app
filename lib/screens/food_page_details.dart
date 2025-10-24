@@ -22,6 +22,7 @@ class FoodPageDetails extends StatefulWidget {
 
 class _FoodPageDetailsState extends State<FoodPageDetails> {
   void addToCart(FoodModel food, Map<Addon, bool> selectedAddons) {
+    Navigator.pop(context);
     List<Addon> currentlySelectedAddons = [];
     for (Addon addon in widget.food.availabeAddones) {
       if (widget.selectedAddons[addon] == true) {
@@ -115,7 +116,8 @@ class _FoodPageDetailsState extends State<FoodPageDetails> {
                         ),
                         MyButtonWidget(
                             title: 'Add To Carte',
-                            ontap: () {},
+                            ontap: () =>
+                                addToCart(widget.food, widget.selectedAddons),
                             borderRadius: 12,
                             padding: EdgeInsets.all(20))
                       ],
