@@ -3,7 +3,7 @@ import 'package:food_delivery_app/Model/food_model.dart';
 class CardModel {
   final FoodModel food;
   final List<Addon> selectedAddons;
-  final int quantity;
+  int quantity;
 
   CardModel({
     required this.food,

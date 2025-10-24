@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/Model/food_model.dart';
+import 'package:food_delivery_app/Model/restaurant_model.dart';
 import 'package:food_delivery_app/widgets/m_button.dart';
+import 'package:provider/provider.dart';
 
 class FoodPageDetails extends StatefulWidget {
   final FoodModel food;
@@ -19,6 +21,16 @@ class FoodPageDetails extends StatefulWidget {
 }
 
 class _FoodPageDetailsState extends State<FoodPageDetails> {
+  void addToCart(FoodModel food, Map<Addon, bool> selectedAddons) {
+    List<Addon> currentlySelectedAddons = [];
+    for (Addon addon in widget.food.availabeAddones) {
+      if (widget.selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
+    }
+    context.read<RestaurantModel>().addToCart(food, currentlySelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
