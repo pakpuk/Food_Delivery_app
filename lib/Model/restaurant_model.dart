@@ -148,15 +148,31 @@ class RestaurantModel extends ChangeNotifier {
         _cart.removeAt(cartIndex);
       }
     }
+    notifyListeners();
   }
 
-  void getTotalPrice() {
+  double getTotalPrice() {
     double total = 0.0;
     for (CardModel cardItem in _cart) {
       double itemTotal = cardItem.food.price;
       for (Addon addon in cardItem.selectedAddons) {
         itemTotal += itemTotal;
       }
+      total += itemTotal * cardItem.quantity;
     }
+    return total;
+  }
+
+  int getTotalItemCount() {
+    int totalItemCount = 0;
+    for (CardModel cardItem in _cart) {
+      totalItemCount += cardItem.quantity;
+    }
+    return totalItemCount;
+  }
+
+  void cleaCart() {
+    _cart.clear();
+    notifyListeners();
   }
 }
