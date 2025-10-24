@@ -139,5 +139,14 @@ class RestaurantModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeFromCard(CardModel cardItem) {}
+  void removeFromCard(CardModel cardItem) {
+    int cartIndex = _cart.indexOf(cardItem);
+    if (cartIndex != -1) {
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+  }
 }
