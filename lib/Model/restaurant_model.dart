@@ -149,4 +149,14 @@ class RestaurantModel extends ChangeNotifier {
       }
     }
   }
+
+  void getTotalPrice() {
+    double total = 0.0;
+    for (CardModel cardItem in _cart) {
+      double itemTotal = cardItem.food.price;
+      for (Addon addon in cardItem.selectedAddons) {
+        itemTotal += itemTotal;
+      }
+    }
+  }
 }
