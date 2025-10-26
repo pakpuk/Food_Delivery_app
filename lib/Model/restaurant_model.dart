@@ -119,6 +119,8 @@ class RestaurantModel extends ChangeNotifier {
 
   List<FoodModel> get menuList => menu;
 
+  List<CardModel> get carditem => _cart;
+
   final List<CardModel> _cart = [];
 
   void addToCart(FoodModel food, List<Addon> selectedAddons) {
