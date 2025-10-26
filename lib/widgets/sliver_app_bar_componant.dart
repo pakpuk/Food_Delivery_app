@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/screens/cart_page.dart';
 
 class SliverAppBarComponant extends StatelessWidget {
   const SliverAppBarComponant(
@@ -12,7 +13,8 @@ class SliverAppBarComponant extends StatelessWidget {
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       actions: [
         IconButton(
-          onPressed: () => Navigator.push,
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CartPage())),
           icon: const Icon(
             Icons.shopping_cart,
           ),
