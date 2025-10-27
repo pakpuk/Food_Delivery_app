@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/Model/card_model.dart';
-import 'package:food_delivery_app/Model/food_model.dart';
 import 'package:food_delivery_app/Model/restaurant_model.dart';
+import 'package:food_delivery_app/common/text_manager.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
-  const CartPage({super.key, required this.food, required this.cardItem});
-  final FoodModel food;
-  final CardModel cardItem;
+  const CartPage({super.key});
+
   @override
   State<CartPage> createState() => _CartPageState();
 }
@@ -20,7 +18,24 @@ class _CartPageState extends State<CartPage> {
         final userCart = restaurant.carditem;
 
         return Scaffold(
-          body: ,
+          appBar: AppBar(
+            title: const Text(TextManager.cartText),
+            backgroundColor: Colors.transparent,
+            foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: userCart.length,
+                      itemBuilder: (context, index) {
+                        final cartItem = userCart[index];
+                        return ListTile(
+                          title: Text(cartItem.food.name),
+                        );
+                      }))
+            ],
+          ),
         );
       },
     );
