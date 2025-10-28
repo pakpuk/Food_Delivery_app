@@ -16,9 +16,17 @@ class DeliveryProgressPage extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios)),
       ),
+      bottomNavigationBar: _bottomNavigationBar(context),
       body: Column(
         children: [MyRecipt()],
       ),
+    );
+  }
+
+  Widget _bottomNavigationBar(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
     );
   }
 }
