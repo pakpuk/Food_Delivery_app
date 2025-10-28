@@ -10,5 +10,5 @@ class TextManager {
   static const String warningClearcart =
       'Are you  sure you want  to clear the cart?';
   static const String paymentAppBarTitle = 'Checkout';
-  static const String confirmpaayment = 'Confirm Payment';
+  static const String confirmpayment = 'Confirm Payment';
 }

@@ -37,7 +37,7 @@ class MyRecipt extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-          const   Text('Esitamted Delivery time is : 4:10 PM');
+            const Text('Esitamted Delivery time is : 4:10 PM'),
           ],
         ),
       ),
