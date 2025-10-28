@@ -46,6 +46,26 @@ class DeliveryProgressPage extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
+          Column(
+            children: [
+              Text(
+                "Driver Name",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                "Driver ",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
