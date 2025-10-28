@@ -207,5 +207,6 @@ class RestaurantModel extends ChangeNotifier {
      }
      recipt.writeln();
      }
+     recipt.writeln();
   }
 }
