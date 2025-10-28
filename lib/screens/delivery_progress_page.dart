@@ -65,6 +65,31 @@ class DeliveryProgressPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.message)),
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  shape: BoxShape.circle,
+                ),
+                child:
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
+                color: Theme.of(context).colorScheme.primary,
+              )
+            ],
           )
         ],
       ),
