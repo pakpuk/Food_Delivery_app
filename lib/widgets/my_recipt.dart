@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/Model/restaurant_model.dart';
 
 class MyRecipt extends StatelessWidget {
   const MyRecipt({super.key});
@@ -24,7 +25,7 @@ class MyRecipt extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                       color: Theme.of(context).colorScheme.secondary)),
-              child: Text('recipt here'),
+              child: Consumer<RestaurantModel>(builder:(context,restaurant,child)=>return Text(restaurant.di)){},
             )
           ],
         ),
