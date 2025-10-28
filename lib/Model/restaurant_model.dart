@@ -189,26 +189,30 @@ class RestaurantModel extends ChangeNotifier {
         .join(",");
   }
 
-  String displayCartRecipt{
-    final recipt =StringBuffer();
-     recipt.writeln('Here is  your recipt.');
-     recipt.writeln();
+  String displayCartRecipt() {
+    final recipt = StringBuffer();
+    recipt.writeln('Here is  your recipt.');
+    recipt.writeln();
 
-     String formatDate=DateFormat('yyyy-mm-dd HH:mm:ss') .format(DateTime.now());
-     recipt.writeln();
-     recipt.writeln();
-     recipt.writeln('--------');
+    String formatDate =
+        DateFormat('yyyy-mm-dd HH:mm:ss').format(DateTime.now());
+    recipt.writeln();
+    recipt.writeln();
+    recipt.writeln('--------');
 
-     for(final cartitem in _cart){
-      recipt.writeln('${cartitem.quantity}*${cartitem.food.name}-${_formatPrice(cartitem.food.price)}');
-     if(cartitem.selectedAddons.isNotEmpty){
-      recipt.writeln('Add_ons: ${_formatAddons(cartitem.selectedAddons)}');
-
-     }
-     recipt.writeln();
-     }
-     recipt.writeln('--------');
+    for (final cartitem in _cart) {
+      recipt.writeln(
+          '${cartitem.quantity}*${cartitem.food.name}-${_formatPrice(cartitem.food.price)}');
+      if (cartitem.selectedAddons.isNotEmpty) {
+        recipt.writeln('Add_ons: ${_formatAddons(cartitem.selectedAddons)}');
+      }
       recipt.writeln();
+    }
+    recipt.writeln('--------');
+    recipt.writeln();
+    recipt.writeln('Total Items : ${getTotalItemCount()}');
+    recipt.writeln('Total Price : ${getTotalPrice()}');
 
+    return recipt.toString();
   }
 }
