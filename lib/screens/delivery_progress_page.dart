@@ -27,6 +27,23 @@ class DeliveryProgressPage extends StatelessWidget {
     return Container(
       height: 100,
       width: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              shape: BoxShape.circle,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
