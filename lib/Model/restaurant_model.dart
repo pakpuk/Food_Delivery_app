@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/Model/card_model.dart';
 import 'package:food_delivery_app/Model/food_model.dart';
+import 'package:intl/intl.dart';
 
 class RestaurantModel extends ChangeNotifier {
   final List<FoodModel> menu = [
@@ -176,5 +177,35 @@ class RestaurantModel extends ChangeNotifier {
   void cleaCart() {
     _cart.clear();
     notifyListeners();
+  }
+
+  String _formatPrice(double price) {
+    return '\$${price.toStringAsFixed(2)}';
+  }
+
+  String _formatAddons(List<Addon> addons) {
+    return addons
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(",");
+  }
+
+  String displayCartRecipt{
+    final recipt =StringBuffer();
+     recipt.writeln('Here is  your recipt.');
+     recipt.writeln();
+
+     String formatDate=DateFormat('yyyy-mm-dd HH:mm:ss') .format(DateTime.now());
+     recipt.writeln();
+     recipt.writeln();
+     recipt.writeln('--------');
+
+     for(final cartitem in _cart){
+      recipt.writeln('${cartitem.quantity}*${cartitem.food.name}-${_formatPrice(cartitem.food.price)}');
+     if(cartitem.selectedAddons.isNotEmpty){
+      recipt.writeln('Add_ons: ${_formatAddons(cartitem.selectedAddons)}');
+
+     }
+     recipt.writeln();
+     }
   }
 }
